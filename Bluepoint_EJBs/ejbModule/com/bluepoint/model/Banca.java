@@ -30,4 +30,12 @@ public class Banca {
 	public void setNomeBanca(String nomeBanca) {
 		this.nomeBanca = nomeBanca;
 	}
+	
+	@Override
+	public String toString() {
+	
+		return "Código: " + this.getIdBanca() + " \n"
+			 + "Nome da Banca: " + this.getNomeBanca() + " \n\n";
+		
+	}
 }

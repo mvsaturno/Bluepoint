@@ -8,12 +8,12 @@ import com.bluepoint.model.Banca;
 
 public class Salvando {
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA_Concursos");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bluepoint");
 		EntityManager em = emf.createEntityManager();
 		
 		//instanciando uma Banca pra testar no Banco:
 		Banca b = new Banca();
-		b.setNomeBanca("BANCA1");
+		b.setNomeBanca("Céspe");
 		
 		em.getTransaction().begin();
 		em.persist(b);
