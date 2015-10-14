@@ -6,13 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.bluepoint.dao.BancaDAO;
 import com.bluepoint.model.Banca;
 
 public class Consultanto {
 
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bluepoint");
-		EntityManager em = emf.createEntityManager();
+		/*EntityManagerFactory emf = Persistence.createEntityManagerFactory("bluepoint");
+		EntityManager em = emf.createEntityManager();*/
 		
 		/*
 		Banca b = em.find(Banca.class, 4);
@@ -23,7 +24,18 @@ public class Consultanto {
 			System.out.println("Banca não encontrada!");
 		}*/
 		
+		
+		/*
 		List<Banca> bancas = em.createQuery("from Banca", Banca.class).getResultList();
+		
+		for (Banca banca : bancas) {
+			System.out.print(banca.toString());
+		}
+		*/
+		
+		BancaDAO bdao = new BancaDAO();
+		
+		List<Banca> bancas = bdao.consultaBancas();
 		
 		for (Banca banca : bancas) {
 			System.out.print(banca.toString());
