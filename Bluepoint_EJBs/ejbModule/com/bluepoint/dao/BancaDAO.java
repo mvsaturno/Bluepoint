@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 
 import com.bluepoint.model.Banca;
 
+import controller.BluepointException;
+
 public class BancaDAO implements Serializable {
 	
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("bluepoint");
