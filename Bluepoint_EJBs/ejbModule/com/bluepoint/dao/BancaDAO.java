@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 import com.bluepoint.model.Banca;
 
-import controller.BluepointException;
+import services.BluepointException;
 
 public class BancaDAO implements Serializable {
 	
