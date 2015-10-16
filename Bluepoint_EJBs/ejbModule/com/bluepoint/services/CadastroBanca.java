@@ -1,4 +1,4 @@
-package services;
+package com.bluepoint.services;
 
 import java.io.Serializable;
 

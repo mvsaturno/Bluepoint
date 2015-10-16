@@ -9,8 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.bluepoint.model.Banca;
-
-import services.BluepointException;
+import com.bluepoint.services.BluepointException;
 
 public class BancaDAO implements Serializable {
 	
