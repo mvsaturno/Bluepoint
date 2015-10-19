@@ -10,6 +10,7 @@ import javax.inject.Named;
 import com.bluepoint.model.Banca;
 import com.bluepoint.services.BluepointException;
 import com.bluepoint.services.CadastroBanca;
+import com.bluepoint.util.FacesUtil;
 
 @Named
 @ViewScoped
@@ -24,8 +25,9 @@ public class CadastroBancaBean implements Serializable {
 		try {
 			this.cadastroBanca.salvar(banca);
 			System.out.print("Banca salva com sucesso!");
+			FacesUtil.addSuccessMessage("Banca cadastrada com sucesso!");
 		} catch (BluepointException e) {
-			e.printStackTrace();
+			FacesUtil.addErrorMessage(e.getMessage());
 		}
 	}
 	
