@@ -3,10 +3,7 @@ package com.bluepoint.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bluepoint.model.Banca;
@@ -16,12 +13,10 @@ import com.bluepoint.util.FacesUtil;
 
 @Named
 @ViewScoped
-@ManagedBean(name="CadastroBancaBean")
 public class CadastroBancaBean implements Serializable {
 	
-	@Inject
-	@ManagedProperty(value="#{cadastroBanca}")
-	private CadastroBanca cadastroBanca;
+	//@Inject
+	private CadastroBanca cadastroBanca = new CadastroBanca();
 	
 	
 	private Banca banca;

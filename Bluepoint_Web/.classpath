@@ -25,5 +25,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Bluepoint_EJBs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FacesUtil"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Inject"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSF"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaenterprise"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javax.interceptor"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+xmlns:o="http://omnifaces.org/ui"
+xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="titulo">Pesquisa de Bancas</ui:define>
+    
+    <ui:define name="corpo">
+    	<h1>Pesquisa de Bancas</h1>
+    	
+    	<h:form id="frmPesquisa">
+    		<p:messages id="messages" autoUpdate="true" closable="true" />
+    		
+    		<p:toolbar style="margin-top: 20px">
+    			<p:toolbarGroup>
+    				<p:commandButton value="Novo" id="botaoNovo" action="/banca/cadastroBancas.xhtml"/>
+    			</p:toolbarGroup>
+    		</p:toolbar>
+    	
+	    	<p:dataTable id="bancasTable" value="#{pesquisaBancaBean.bancas}" var="banca"
+		    		style="margin-top: 20px" emptyMessage="Nenhum banca encontrado." rows="20"
+		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+		    		<p:column headerText="Código" style="text-align: center; width: 100px">
+		    			<h:outputText value="#{banca.codigo}" />
+		    		</p:column>
+		    		<p:column headerText="Nome">
+		    			<h:outputText value="#{banca.nome}" />
+		    		</p:column>
+		    		<p:column style="width: 100px; text-align: center">
+		    			<p:button outcome="CadastroBanca" icon="ui-icon-pencil" title="Editar">
+		    				<f:param name="banca" value="#{banca.codigo}"/>
+		    			</p:button>
+		    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()"
+								process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
+							<f:setPropertyActionListener target="#{pesquisaBancaBean.bancaSelecionado}" value="#{banca}" />
+						</p:commandButton>
+		    		</p:column>
+		    </p:dataTable>
+		    
+		    <p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao"
+	        		message="Tem certeza que deseja excluir o banca #{pesquisaBancaBean.bancaSelecionado.nome}?"  
+	                header="Exclusão de banca" severity="alert">
+	        	<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
+	        	<p:commandButton value="Sim" update=":frmPesquisa:bancasTable"
+	        			onclick="confirmacaoExclusao.hide()" action="#{pesquisaBancaBean.excluir}" />
+	    	</p:confirmDialog>
+	    </h:form>
+    </ui:define>
+
+</html>

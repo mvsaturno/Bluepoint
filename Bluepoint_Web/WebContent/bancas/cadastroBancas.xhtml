@@ -34,12 +34,13 @@ xmlns:f="http://java.sun.com/jsf/core">
 	    	<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
 	    			columnClasses="rotulo, campo">
 	    		<p:outputLabel value="Código" for="codigo"/>
-	    		<p:inputText id="codigo" size="20" maxlength="20" value="#{cadastroBancaBean.banca.codigo}" readonly="true"/>
+	    		<p:inputText id="codigo" size="20" maxlength="20" value="#{cadastroBancaBean.banca.idBanca}" readonly="true"/>
 	    		
 	    		<p:outputLabel value="Nome" for="nome"/>
-	    		<p:inputText id="nome" size="60" maxlength="80" value="#{cadastroBancaBean.banca.nome}"/>
+	    		<p:inputText id="nome" size="60" maxlength="80" value="#{cadastroBancaBean.banca.nomeBanca}"/>
 	    	</p:panelGrid>
 	</h:form>
 	
 </h:body>
+
 </html>
