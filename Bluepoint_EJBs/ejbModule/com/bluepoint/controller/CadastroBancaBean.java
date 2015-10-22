@@ -24,7 +24,6 @@ public class CadastroBancaBean implements Serializable {
 	public void salvar(){
 		try {
 			this.cadastroBanca.salvar(banca);
-			System.out.print("Banca salva com sucesso!");
 			FacesUtil.addSuccessMessage("Banca cadastrada com sucesso!");
 		} catch (BluepointException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
