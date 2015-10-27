@@ -77,7 +77,7 @@ public class BancaDAO implements Serializable {
 		return b;
 	}
 
-	@Transactional
+	/*@Transactional*/
 	public void excluir(Banca banca) throws BluepointException{
 		Banca bancaTemp = em.find(Banca.class, banca.getIdBanca());
 		

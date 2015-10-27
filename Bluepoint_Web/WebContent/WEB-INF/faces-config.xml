@@ -9,5 +9,12 @@
 		<managed-bean-class>com.bluepoint.controller.CadastroBancaBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>pesquisaBancaBean</managed-bean-name>
+		<managed-bean-class>com.bluepoint.controller.PesquisaBancaBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
 
 </faces-config>

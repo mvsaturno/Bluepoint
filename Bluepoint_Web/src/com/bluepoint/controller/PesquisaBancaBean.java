@@ -8,16 +8,16 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
-import com.bluepoint.dao.BancaDAO;
 import com.bluepoint.model.Banca;
-import com.bluepoint.services.BluepointException;
-import com.bluepoint.util.FacesUtil;
+import com.bluepoint.services.ExcluirBanca;
+import com.bluepoint.services.PesquisaBanca;
 
 @Named
 @ViewScoped
 public class PesquisaBancaBean implements Serializable {
 	
-	BancaDAO bancaDAO = new BancaDAO();
+	PesquisaBanca pesquisaBanca = new PesquisaBanca();
+	ExcluirBanca excluirBanca = new ExcluirBanca();
 	
 	private List<Banca> bancas = new ArrayList<>();
 	
@@ -27,16 +27,10 @@ public class PesquisaBancaBean implements Serializable {
 		return bancas;
 	}
 	
+	
 	public void excluir(){
-		
-		try {
-			bancaDAO.excluir(bancaSelecionada);
+			excluirBanca.excluir(bancaSelecionada);
 			this.bancas.remove(bancaSelecionada);
-			FacesUtil.addSuccessMessage("Banca " + bancaSelecionada.getNomeBanca() + "excluída com sucesso!");
-		} catch (BluepointException e) {
-			FacesUtil.addErrorMessage(e.getMessage());
-		}
-		
 	}
 	
 	public Banca getBancaSelecionado() {
@@ -49,6 +43,41 @@ public class PesquisaBancaBean implements Serializable {
 		
 	@PostConstruct
 	public void inicializar() {
-		bancas = bancaDAO.consultaBancas();
+		bancas = pesquisaBanca.pesquisaAll();
 	}
+
+
+	public Banca getBancaSelecionada() {
+		return bancaSelecionada;
+	}
+	public void setBancaSelecionada(Banca bancaSelecionada) {
+		this.bancaSelecionada = bancaSelecionada;
+	}
+
+
+	public void setBancas(List<Banca> bancas) {
+		this.bancas = bancas;
+	}
+
+
+	public PesquisaBanca getPesquisaBanca() {
+		return pesquisaBanca;
+	}
+
+
+	public void setPesquisaBanca(PesquisaBanca pesquisaBanca) {
+		this.pesquisaBanca = pesquisaBanca;
+	}
+
+
+	public ExcluirBanca getExcluirBanca() {
+		return excluirBanca;
+	}
+
+
+	public void setExcluirBanca(ExcluirBanca excluirBanca) {
+		this.excluirBanca = excluirBanca;
+	}
+	
+	
 }

@@ -8,17 +8,19 @@ xmlns:p="http://primefaces.org/ui"
 xmlns:o="http://omnifaces.org/ui"
 xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:define name="titulo">Pesquisa de Bancas</ui:define>
-    
-    <ui:define name="corpo">
-    	<h1>Pesquisa de Bancas</h1>
-    	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<ui:define name="title">Bancas no Sistema</ui:define>
+</h:head>
+<h:body>
+
+    	<h1>Bancas Cadastradas</h1>
     	<h:form id="frmPesquisa">
     		<p:messages id="messages" autoUpdate="true" closable="true" />
     		
     		<p:toolbar style="margin-top: 20px">
     			<p:toolbarGroup>
-    				<p:commandButton value="Novo" id="botaoNovo" action="/banca/cadastroBancas.xhtml"/>
+    				<p:commandButton value="Novo" id="botaoNovo" action="cadastroBancas.xhtml"/>
     			</p:toolbarGroup>
     		</p:toolbar>
     	
@@ -26,15 +28,15 @@ xmlns:f="http://java.sun.com/jsf/core">
 		    		style="margin-top: 20px" emptyMessage="Nenhum banca encontrado." rows="20"
 		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 		    		<p:column headerText="Código" style="text-align: center; width: 100px">
-		    			<h:outputText value="#{banca.codigo}" />
+		    			<h:outputText value="#{banca.idBanca}" />
 		    		</p:column>
 		    		<p:column headerText="Nome">
-		    			<h:outputText value="#{banca.nome}" />
+		    			<h:outputText value="#{banca.nomeBanca}" />
 		    		</p:column>
 		    		<p:column style="width: 100px; text-align: center">
-		    			<p:button outcome="CadastroBanca" icon="ui-icon-pencil" title="Editar">
-		    				<f:param name="banca" value="#{banca.codigo}"/>
-		    			</p:button>
+		    			<!-- <p:button outcome="CadastroBanca" icon="ui-icon-pencil" title="Editar"> -->
+		    			<!-- 	<f:param name="banca" value="#{banca.idBanca}"/> -->
+		    			<!-- </p:button> -->
 		    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()"
 								process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
 							<f:setPropertyActionListener target="#{pesquisaBancaBean.bancaSelecionado}" value="#{banca}" />
@@ -43,13 +45,14 @@ xmlns:f="http://java.sun.com/jsf/core">
 		    </p:dataTable>
 		    
 		    <p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao"
-	        		message="Tem certeza que deseja excluir o banca #{pesquisaBancaBean.bancaSelecionado.nome}?"  
+	        		message="Tem certeza que deseja excluir a banca #{pesquisaBancaBean.bancaSelecionado.nomeBanca}?"  
 	                header="Exclusão de banca" severity="alert">
 	        	<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
 	        	<p:commandButton value="Sim" update=":frmPesquisa:bancasTable"
 	        			onclick="confirmacaoExclusao.hide()" action="#{pesquisaBancaBean.excluir}" />
 	    	</p:confirmDialog>
 	    </h:form>
-    </ui:define>
+
+</h:body>
 
 </html>
